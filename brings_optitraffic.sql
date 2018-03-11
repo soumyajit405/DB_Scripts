@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 11, 2018 at 01:49 PM
+-- Generation Time: Mar 11, 2018 at 05:22 PM
 -- Server version: 5.6.38
 -- PHP Version: 5.6.33
 
@@ -1879,37 +1879,56 @@ ALTER TABLE `usr_log_info`
 -- Indexes for table `wh_controller`
 --
 ALTER TABLE `wh_controller`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `controller_id` (`controller_id`),
+  ADD KEY `controller_id_2` (`controller_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `wh_controller_inventory`
 --
 ALTER TABLE `wh_controller_inventory`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `controller_id` (`controller_id`),
+  ADD KEY `controller_id_2` (`controller_id`);
 
 --
 -- Indexes for table `wh_device`
 --
 ALTER TABLE `wh_device`
-  ADD PRIMARY KEY (`device_id`);
+  ADD PRIMARY KEY (`device_id`),
+  ADD KEY `device_id` (`device_id`),
+  ADD KEY `controller_id` (`controller_id`);
 
 --
 -- Indexes for table `wh_device_log_info`
 --
 ALTER TABLE `wh_device_log_info`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `controller_id` (`controller_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `wh_schdeuler`
 --
 ALTER TABLE `wh_schdeuler`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `controller_id` (`controller_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `start_date` (`start_date`),
+  ADD KEY `start_date_2` (`start_date`),
+  ADD KEY `start_date_3` (`start_date`),
+  ADD KEY `end_date` (`end_date`),
+  ADD KEY `start_time` (`start_time`),
+  ADD KEY `end_time` (`end_time`);
 
 --
 -- Indexes for table `wh_user`
 --
 ALTER TABLE `wh_user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
